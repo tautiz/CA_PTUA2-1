@@ -1,0 +1,30 @@
+body > * {
+    border: 1px solid black;
+    margin: 3px;
+}
+
+body > header {
+    background-color: hotpink;
+}
+.main_content {
+    background-color: #9b9b79;
+}
+
+body > div > aside {
+    background-color: cornflowerblue;
+}
+
+body > footer {
+    background-color: #3f3e3e;
+    color: white;
+}
+
+div.relkama {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: #3f3e3e;
+    color: white;
+    width: 150px;
+}

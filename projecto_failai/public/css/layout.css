@@ -1,0 +1,25 @@
+/** {*/
+/*    border: 1px dashed red;*/
+/*    margin: 3px;*/
+/*}*/
+body > main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.main_content {
+    width: 69%;
+}
+
+body > div > aside {
+    width: 30%;
+}
+.main_content, body > div > aside  {
+    float: left;
+}
+
+body> div {
+    display: flex;
+}
