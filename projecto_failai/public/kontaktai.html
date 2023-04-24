@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="css/forms.css">
 </head>
 <body>
 <header>
@@ -28,32 +29,44 @@
 </header>
 <main>
     <div>
-        <h1>Mano kontaktai</h1>
-        <form action="kursiustiduomenis.php" method="post">
-            <label for="vardas">Vardas</label>
-            <input type="text" name="vardas" id="vardas">
-            <label for="pavarde">Pavarde</label>
-            <input type="text" name="pavarde" id="pavarde">
-            <label for="email">El. paštas</label>
-            <input type="email" name="email" id="email">
-            <label for="kursas">Kursas</label>
-            <select name="kursas" id="kursas">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            <label for="komentaras">Komentaras</label>
-            <textarea name="komentaras" id="komentaras" cols="30" rows="10"></textarea>
-            <button type="submit">Siųsti</button>
-        </form>
+        <div class="container">
+            <div class="components">
+                <h1>Mano kontaktai</h1>
+                <form action="kursiustiduomenis.php" method="post" class="form">
+
+                    <label for="vardas">Vardas</label>
+                    <input type="text" name="vardas" id="vardas" class="form__input">
+
+                    <label for="pavarde">Pavarde</label>
+                    <input type="text" name="pavarde" id="pavarde" class="form__input">
+
+                    <label for="email">El. paštas</label>
+                    <input type="email" name="email" id="email" class="form__input">
+
+                    <label for="kursas">Kursas</label>
+                    <select name="kursas" id="kursas" class="form__input">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+
+                    <label for="komentaras">Komentaras</label>
+                    <textarea name="komentaras" id="komentaras" cols="30" rows="10" class="form__input"></textarea>
+
+                    <div>
+                        <button type="submit" class="btn btn__primary">Siųsti</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </main>
 <aside>
     <div class="relkama">TAVO reklama</div>
 </aside>
 <footer>
-      <span>© 2023 - visos teisės saugomos</span>
+    <span>© 2023 - visos teisės saugomos</span>
 </footer>
 </body>
 </html>
