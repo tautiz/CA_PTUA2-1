@@ -6,6 +6,7 @@ body > * {
 body > header {
     background-color: hotpink;
 }
+
 .main_content {
     background-color: #9b9b79;
 }
@@ -27,4 +28,10 @@ div.relkama {
     background-color: #3f3e3e;
     color: white;
     width: 150px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

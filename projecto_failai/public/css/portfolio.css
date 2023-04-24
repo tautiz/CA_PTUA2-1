@@ -1,0 +1,34 @@
+.sachmatai > div {
+    border: 1px solid darkgray;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sachmatai {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+    grid-gap: 5px;
+    height: 700px;
+    width: 700px;
+}
+
+.sachmatai > div:nth-child(4n+2){
+    background-color: lightblue;
+}
+
+.sachmatai > div:nth-child(4n+4){
+    background-color: lightgreen;
+}
+
+.sachmatai > div:nth-child(2n+16){
+    background-color: lightpink;
+}
+
+.darbai {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}

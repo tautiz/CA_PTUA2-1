@@ -1,25 +1,42 @@
-/** {*/
-/*    border: 1px dashed red;*/
-/*    margin: 3px;*/
-/*}*/
+body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 50px auto 150px;
+    grid-gap: 10px;
+    grid-template-areas:
+        "s s a a a a a a a a a a"
+        "s s m m m m m m m m m m"
+        "f f f f f f f f f f f f"
+}
+
+body > header {
+    grid-area: a;
+}
+
 body > main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+    grid-area: m;
 }
 
-.main_content {
-    width: 69%;
+body > aside {
+    grid-area: s;
 }
 
-body > div > aside {
-    width: 30%;
-}
-.main_content, body > div > aside  {
-    float: left;
+body > footer {
+    grid-area: f;
 }
 
-body> div {
-    display: flex;
-}
+
+/*.main_content {*/
+/*    width: 69%;*/
+/*}*/
+
+/*body > div > aside {*/
+/*    width: 30%;*/
+/*}*/
+/*.main_content, body > div > aside  {*/
+/*    float: left;*/
+/*}*/
+
+/*body> div {*/
+/*    display: flex;*/
+/*}*/
