@@ -39,29 +39,6 @@ body > header nav {
     align-items: center;
     height: 100%;
 }
-body > header nav ul li {
-    margin-right: 5px;
-    padding-right: 5px;
-    border-right: 2px solid white;
-}
-body > header nav ul li:last-child {
-    border-right: none;
-}
-body > header nav ul li:hover a {
-    transition: font-size 0.5s;
-    font-size: 1.7em;
-}
-
-body > header nav ul li {
-    display:inline;
-    font-size: 1.5em;
-}
-
-nav ul li a{
-    transition: font-size 0.5s;
-    color: white;
-    text-decoration: none;
-}
 
 body > footer {
     display: flex;
