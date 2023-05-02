@@ -1,26 +1,49 @@
 const page = window.location.pathname;
-console.log(page);
-// UNFINISHED....
 
-// if (page){
-//     let redir = '404.html'
-//     switch (page) {
-//         case '/':
-//             redir = 'index.html'
-//             break;
-//         case '/cv':
-//             redir = 'cv.html'
-//             break
-//         case '/portfolio':
-//             redir = 'portfolio.html'
-//             break;
-//         case '/kontaktai':
-//             redir = 'kontaktai.html'
-//             break;
-//     }
-//     window.location.href = redir;
-// }
-let jsonMeniu = '[{"title":"Pradžia", "url":"/"},{"title":"CV", "url":"/cv"},{"title":"Portfolio", "url":"/portfolio"},{"title":"Kontaktai", "url":"/kontaktai"}]';
+if (page) {
+    let redir = null;
+
+    const pageWithoutExtension = page.replace(/\.html$/, '');
+
+    switch (pageWithoutExtension) {
+        case '/':
+        case '/index':
+            if (page !== '/index.html') {
+                redir = 'index.html';
+            }
+            break;
+        case '/cv':
+            if (page !== '/cv.html') {
+                redir = 'cv.html';
+            }
+            break;
+        case '/portfolio':
+            if (page !== '/portfolio.html') {
+                redir = 'portfolio.html';
+            }
+            break;
+        case '/kontaktai':
+            if (page !== '/kontaktai.html') {
+                redir = 'kontaktai.html';
+            }
+            break;
+        case '/404':
+            if (page !== '/404.html') {
+                redir = '404.html';
+            }
+            break;
+        default:
+            redir = '404.html';
+            break;
+    }
+console.log(window.location);
+    if (redir) {
+        window.location.href = redir;
+    }
+}
+
+
+const jsonMeniu = '[{"title":"Pradžia", "url":"/"},{"title":"CV", "url":"/cv"},{"title":"Portfolio", "url":"/portfolio"},{"title":"Kontaktai", "url":"/kontaktai"}]';
 
 let meniuList = JSON.parse(jsonMeniu);
 
