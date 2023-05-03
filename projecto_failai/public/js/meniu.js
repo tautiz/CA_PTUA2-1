@@ -1,10 +1,7 @@
 const page = window.location.pathname;
 
-if (page) {
+function getRedirectPage(pageWithoutExtension = null) {
     let redir = null;
-
-    const pageWithoutExtension = page.replace(/\.html$/, '');
-
     switch (pageWithoutExtension) {
         case '/':
         case '/index':
@@ -36,16 +33,35 @@ if (page) {
             redir = '404.html';
             break;
     }
-console.log(window.location);
+
+    return redir;
+}
+
+function redirectPage() {
+    const pageWithoutExtension = page.replace(/\.html$/, '');
+
+    let redir = getRedirectPage(pageWithoutExtension);
+
     if (redir) {
         window.location.href = redir;
     }
 }
 
+function getMeniuJsonString() {
+    return '[{"title":"Pradžia", "url":"/"},{"title":"CV", "url":"/cv"},{"title":"Portfolio", "url":"/portfolio"},{"title":"Kontaktai", "url":"/kontaktai"}]';
+}
 
-const jsonMeniu = '[{"title":"Pradžia", "url":"/"},{"title":"CV", "url":"/cv"},{"title":"Portfolio", "url":"/portfolio"},{"title":"Kontaktai", "url":"/kontaktai"}]';
+if (page) {
+    redirectPage();
+}
 
-let meniuList = JSON.parse(jsonMeniu);
+function getMeniuList() {
+    const jsonMeniu = getMeniuJsonString();
+
+    return JSON.parse(jsonMeniu);
+}
+
+let meniuList = getMeniuList();
 
 let kurDetiMeniuHTML = document.querySelector('body > header > nav > ul');
 
