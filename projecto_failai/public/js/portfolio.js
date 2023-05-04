@@ -45,4 +45,18 @@ window.onload = () => {
         event.preventDefault(); // Nes mes nenorime išsiūsti duomenų su galima forma
         favDialog.close(); // Dialogo uždarymas.
     }
+
+    let elements = document.querySelectorAll('.sachmatai > div');
+    for(let item of elements) {
+        item.addEventListener('click', function(e){
+            for (let elem of elements) {
+                if (elem !== e.target) {
+                    elem.classList.remove('zoomed');
+                }
+            }
+
+            e.target.classList.toggle('zoomed');
+        })
+    }
+
 }

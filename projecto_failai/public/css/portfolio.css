@@ -24,6 +24,18 @@
     opacity: 1;
 }
 
+.sachmatai > div.zoomed {
+    transform:
+            perspective(800px)
+            rotateY(0deg)
+            translateY(0px)
+            rotateX(0deg)
+            scale(2);
+    filter: blur(0);
+    opacity: 1;
+    z-index: 999;
+}
+
 .sachmatai {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
