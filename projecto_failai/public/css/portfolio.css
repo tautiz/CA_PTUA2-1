@@ -73,3 +73,22 @@
 .darbas:hover {
     transform: translate3d(0px, 0px, -250px);
 }
+
+dialog > input[title="Close"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: lightgray;
+    border-radius: 0 0 0 100%;
+    border: 1px solid gray;
+    color: gray;
+}
+
+dialog  {
+    border: none;
+    box-shadow: #3c3c3c 0 -1px 20px 6px;
+}
+
+dialog::backdrop {
+    background-color: #00000080;
+}
