@@ -1,6 +1,10 @@
-function showAlert(zinutesTekstas = 'Missing text here') {
-    window.alert(zinutesTekstas);
-}
-let element = document.querySelector('.btn')
+function randomNumber(to) {
 
-element.addEventListener('click', function(){showAlert('Naujas tekstas');})
+    let randomNumber = Math.random();
+
+    let number = randomNumber * to ;
+
+    return number;
+}
+
+console.log('Atsitiktinis skaicius: ', Math.round(randomNumber(10)));
