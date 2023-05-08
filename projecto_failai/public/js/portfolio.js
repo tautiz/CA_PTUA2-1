@@ -1,7 +1,123 @@
 window.onload = () => {
+    const darbaiElement = document.querySelector('.darbai');
     const darbai = document.getElementsByClassName('darbas');
     const favDialog = document.getElementById('favDialog');
     const closeBtn = favDialog.querySelector('dialog > [title="Close"]');
+
+    function getRandomNumber() {
+        return Math.floor(Math.random() * 1000);
+    }
+
+    function generatePortfolioElement(data){
+        let div = document.createElement('div');
+        div.className = 'darbas ' + data.categories
+        let img = document.createElement('img');
+        let span = document.createElement('span');
+        img.src = `${data.img}?random=${getRandomNumber()}`;
+        img.alt = data.title;
+        span.textContent = data.title;
+
+        div.append(img);
+        div.append(span);
+
+        return div;
+    }
+
+    function getPortfolioData() {
+        let portfoliojson =  '[{\n' +
+            '\t\t"title": "Svetainės dizainas",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "JS laikmatis",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Vartotojo registracija",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Python API",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "python"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "MySQL duomenų bazės valdymas",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "mysql"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "CSS animacija",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "JS kalbos mokymasis",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Knygų katalogas",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Django svetainė",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "python"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "MySQL duomenų bazės migracija",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "mysql"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "HTML5 video įrašas",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "JS kalbos sudėtingesni pavyzdžiai",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Knygos rekomendacijos",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "html css js"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "Django vartotojų autentifikacija",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "python"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "MySQL duomenų bazės atsarginė kopija",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "mysql"\n' +
+            '\t},\n' +
+            '\t{\n' +
+            '\t\t"title": "CSS grafinis meniu",\n' +
+            '\t\t"img": "https://picsum.photos/200/300",\n' +
+            '\t\t"categories": "css"\n' +
+            '\t}\n' +
+            ']';
+
+        return JSON.parse(portfoliojson);
+    }
+
+    function generatePortfolio(){
+        let portfolioData = getPortfolioData();
+        portfolioData.forEach(function(item){
+            let darbasElement = generatePortfolioElement(item);
+            darbaiElement.append(darbasElement);
+        });
+    }
+
+    generatePortfolio();
 
     // Dialogo uždaryui mygtuko "Close" įvykio registravimas
     closeBtn.addEventListener('click', closeModal);
@@ -32,7 +148,7 @@ window.onload = () => {
         // let imagePath = element.getAttribute('src');
 
         // Ar tiesiog nurodome foto adresą kaip konstantą
-        let imagePath = 'https://picsum.photos/400/600';
+        let imagePath = `https://picsum.photos/400/600?random=${getRandomNumber()}`;
 
         let image = favDialog.querySelector('img');
 
