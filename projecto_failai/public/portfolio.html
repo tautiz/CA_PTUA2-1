@@ -33,8 +33,22 @@
     <div>
         <h1>Mano atliktų darbų sąrašas</h1>
         <hr>
-        <div class="darbai">
-       </div>
+        <form>
+            <label>
+                Kategorija:
+                <select name="category">
+                    <option value="" selected>---Visi---</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="js">js</option>
+                    <option value="python">python</option>
+                    <option value="mysql">MySql</option>
+                </select>
+            </label>
+            <button type="submit">Filter</button>
+        </form>
+        <hr>
+        <div class="darbai"></div>
         <hr>
         <div class="sachmatai">
             <div>&lt;DIV 1&gt;</div>

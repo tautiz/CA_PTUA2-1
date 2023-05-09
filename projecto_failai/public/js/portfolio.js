@@ -3,6 +3,7 @@ window.onload = () => {
     const darbai = document.getElementsByClassName('darbas');
     const favDialog = document.getElementById('favDialog');
     const closeBtn = favDialog.querySelector('dialog > [title="Close"]');
+    const filerForm = document.querySelector('form');
 
     function getRandomNumber() {
         return Math.floor(Math.random() * 1000);
@@ -109,11 +110,14 @@ window.onload = () => {
         return JSON.parse(portfoliojson);
     }
 
-    function generatePortfolio(){
+    function generatePortfolio(catogory = null){
+        darbaiElement.innerHTML = '';
         let portfolioData = getPortfolioData();
         portfolioData.forEach(function(item){
-            let darbasElement = generatePortfolioElement(item);
-            darbaiElement.append(darbasElement);
+            if (catogory == null || item.categories.includes(catogory) ) {
+                let darbasElement = generatePortfolioElement(item);
+                darbaiElement.append(darbasElement);
+            }
         });
     }
 
@@ -175,4 +179,10 @@ window.onload = () => {
         })
     }
 
+    filerForm.addEventListener('submit', function (e){
+        e.preventDefault();
+        let selectedCategory = e.target.elements.category.value;
+
+        generatePortfolio(selectedCategory);
+    })
 }
