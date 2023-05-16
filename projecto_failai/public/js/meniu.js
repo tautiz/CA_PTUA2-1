@@ -29,6 +29,11 @@ function getRedirectPage(pageWithoutExtension = null) {
                 redir = '404.html';
             }
             break;
+        case '/admin':
+            if (page !== '/admin.html') {
+                redir = 'admin.html';
+            }
+            break;
         default:
             redir = '404.html';
             break;

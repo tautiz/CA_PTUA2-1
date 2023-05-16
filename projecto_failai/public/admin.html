@@ -29,18 +29,19 @@
 </header>
 <main>
     <div class="bg_blue text_red border_green">
-        <h1>CV</h1>
-        <div id="cardContents">
-            <div id="cardContainer">
-                <div id="cardFront"></div>
-                <div id="cardBack" style="display: none;"></div>
-            </div>
-            <button id="flipButton">Flip Card</button>
-            <button id="nextButton">Next Card</button>
-        </div>
-
-        <a href="/admin.html">+ Add More Cards</a>
-
+        <h1>Add new card</h1>
+        <form id="cardForm">
+            <label>
+                <textarea id="frontText" placeholder="Front text"></textarea>
+            </label>
+            <br>
+            <label>
+                <textarea id="backText" placeholder="Back text"></textarea>
+            </label>
+            <br>
+            <button type="submit">Add new Card</button>
+        </form>
+        <a href="/cv.html">View CV</a>
     </div>
 </main>
 <aside>
@@ -50,7 +51,7 @@
     <span>© 2023 - visos teisės saugomos</span>
 </footer>
 <script src="/js/meniu.js" defer></script>
-<script src="/js/cv_cards.js"></script>
+<script src="/js/admin_cards.js"></script>
 
 </body>
 </html>
