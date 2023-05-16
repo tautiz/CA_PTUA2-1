@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mano puslapis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/tablets_layout.css">
+    <link rel="stylesheet" href="/css/design.css">
+    <style>
+        body {
+            display: block;
+        }
+        body > footer {
+            height: inherit;
+        }
+    </style>
+</head>
+<body>
+<main class="main_content center">
+    Ar sutinki su salygomis ?
+    <button id="yes">Taip</button>
+    <button id="no">Ne</button>
+</main>
+<footer>
+    <span>© 2023 - visos teisės saugomos</span>
+</footer>
+
+<script>
+    function listener(e) {
+        window.opener.postMessage('Button clicked: ' + e.target.id, '*');
+    }
+
+    document.getElementById('yes').addEventListener('click', listener);
+    document.getElementById('no').addEventListener('click', listener);
+</script>
+
+</body>
+</html>

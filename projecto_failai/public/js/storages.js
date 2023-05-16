@@ -6,6 +6,7 @@
 //    išsisaugotų LocalStorage.
 // * BONUS: Saugoti teksta I localStorage praėjus 2 sekundem su onBlur eventu
 let timer; // Globale deklaruojame timerio kintamajį
+const storage = localStorage;
 
 let duomenysInput = document.getElementById('duomenys');
 
@@ -16,11 +17,11 @@ duomenysInput.addEventListener('focus', handleFocus);
 
 // Duomenu saugojimo funkcija
 function sendData() {
-    localStorage.setItem('manoRaktas', duomenysInput.value);
+    storage.setItem('manoRaktas', duomenysInput.value);
 }
 // Duomenu nuskaitymo funkcija
 function readData() {
-    duomenysInput.value = localStorage.getItem('manoRaktas');
+    duomenysInput.value = storage.getItem('manoRaktas');
 }
 
 // Funkcija, kuri bus iškviečiama kai kursorius pašalinamas iš laukelio
@@ -37,3 +38,4 @@ function handleBlur() {
 function handleFocus() {
     clearTimeout(timer); // Išvalome timerį, jei jis dar nebuvo įvykdytas
 }
+
