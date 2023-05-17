@@ -24,95 +24,19 @@ window.onload = () => {
         return div;
     }
 
-    function getPortfolioData() {
-        let portfoliojson =  '[{\n' +
-            '\t\t"title": "Svetainės dizainas",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "JS laikmatis",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Vartotojo registracija",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Python API",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "python"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "MySQL duomenų bazės valdymas",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "mysql"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "CSS animacija",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "JS kalbos mokymasis",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Knygų katalogas",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Django svetainė",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "python"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "MySQL duomenų bazės migracija",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "mysql"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "HTML5 video įrašas",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "JS kalbos sudėtingesni pavyzdžiai",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Knygos rekomendacijos",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "html css js"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "Django vartotojų autentifikacija",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "python"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "MySQL duomenų bazės atsarginė kopija",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "mysql"\n' +
-            '\t},\n' +
-            '\t{\n' +
-            '\t\t"title": "CSS grafinis meniu",\n' +
-            '\t\t"img": "https://picsum.photos/200/300",\n' +
-            '\t\t"categories": "css"\n' +
-            '\t}\n' +
-            ']';
-
-        return JSON.parse(portfoliojson);
+    async function getPortfolioData() {
+        try {
+            const response = await fetch('/portfolio.json');
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
 
-    function generatePortfolio(catogory = null){
+    async function generatePortfolio(catogory = null){
         darbaiElement.innerHTML = '';
-        let portfolioData = getPortfolioData();
+        let portfolioData = await getPortfolioData();
         portfolioData.forEach(function(item){
             if (catogory == null || item.categories.includes(catogory) ) {
                 let darbasElement = generatePortfolioElement(item);
@@ -179,10 +103,12 @@ window.onload = () => {
         })
     }
 
-    filerForm.addEventListener('submit', function (e){
+    async function handleFormSubmit(e) {
         e.preventDefault();
         let selectedCategory = e.target.elements.category.value;
 
-        generatePortfolio(selectedCategory);
-    })
+        await generatePortfolio(selectedCategory);
+    }
+
+    filerForm.addEventListener('submit', handleFormSubmit);
 }
