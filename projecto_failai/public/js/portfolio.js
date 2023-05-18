@@ -26,7 +26,7 @@ window.onload = () => {
 
     async function getPortfolioData() {
         try {
-            const response = await fetch('/portfolio.json');
+            const response = await fetch('http://localhost:81/portfolio');
             return await response.json();
         } catch (error) {
             console.error(error);

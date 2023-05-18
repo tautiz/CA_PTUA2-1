@@ -1,0 +1,15 @@
+
+.portfolio form {
+    display: grid;
+    width: 300px;
+    grid-template-columns: 4fr 8fr;
+    grid-gap: 5px;
+}
+.portfolio form input {
+    padding: 5px;
+}
+.portfolio form label {
+    display: grid;
+    align-items: center;
+    justify-content: end;
+}

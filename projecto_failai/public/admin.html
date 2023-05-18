@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mano CV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="css/portfolio_form.css">
     <link rel="stylesheet" href="css/cards.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body>
 <header>
@@ -39,15 +42,106 @@
                 <textarea id="backText" placeholder="Back text"></textarea>
             </label>
             <br>
-            <button type="submit">Add new Card</button>
+            <button type="submit" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+            >Add new Card</button>
+            <a href="/cv.html" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+            >View CV</a>
         </form>
-        <a href="/cv.html">View CV</a>
+
         <hr>
         <h2>Mano nustatymai</h2>
         <div class="box">
             <label>Color scheme: <input type="color" id="color-scheme" name="color-scheme"></label>
-            <button id="save-color">Save</button>
-            <button id="default-color">Default</button>
+            <button id="save-color" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+            >Save</button>
+            <button id="default-color" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
+            >Default</button>
+        </div>
+        <hr>
+        <h2>Naujas portfolio elementas</h2>
+        <div class="box portfolio">
+            <form id="portfolioForm" action="http://localhost:81/portfolio" method="post">
+                <input type="hidden" name="id" id="id">
+                <label for="title">Antraštė:</label>
+                <input type="text" name="title" id="title" placeholder="Svetainės dizainas" class="
+                    mt-1
+                    block
+                    w-full
+                    rounded-md
+                    bg-gray-100
+                    border-transparent
+                    focus:border-gray-500 focus:bg-white focus:ring-0
+                  ">
+                <label for="img">Atvaizdas:</label>
+                <input type="text" name="img" id="img" placeholder="https://picsum.photos/200/300" class="
+                    mt-1
+                    block
+                    w-full
+                    rounded-md
+                    bg-gray-100
+                    border-transparent
+                    focus:border-gray-500 focus:bg-white focus:ring-0
+                  ">
+                <label for="categories">Kategorijos:</label>
+                <input type="text" name="categories" id="categories" placeholder="html css" class="
+                    mt-1
+                    block
+                    w-full
+                    rounded-md
+                    bg-gray-100
+                    border-transparent
+                    focus:border-gray-500 focus:bg-white focus:ring-0
+                  ">
+                <button type="submit"class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+                >Saugoti</button>
+            </form>
+            <hr>
+            <h3>Portfolio items</h3>
+
+            <div role="status" id="tablePreloader" class="max-w-md p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                        <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    </div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                </div>
+                <div class="flex items-center justify-between pt-4">
+                    <div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                        <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    </div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                </div>
+                <div class="flex items-center justify-between pt-4">
+                    <div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                        <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    </div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                </div>
+                <div class="flex items-center justify-between pt-4">
+                    <div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                        <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    </div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                </div>
+                <div class="flex items-center justify-between pt-4">
+                    <div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                        <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    </div>
+                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                </div>
+                <span class="sr-only">Loading...</span>
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table id="portfelioLentele" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!-- Lentelės eilutės bus dinamiškai sugeneruotos JS kodo -->
+                </table>
+            </div>
         </div>
     </div>
 </main>
@@ -57,9 +151,7 @@
 <footer>
     <span>© 2023 - visos teisės saugomos</span>
 </footer>
-<script src="/js/meniu.js" defer></script>
-<script src="/js/admin_cards.js"></script>
-<script src="/js/user_settings.js"></script>
+<script  type="module" src="/js/admin.js" defer></script>
 
 </body>
 </html>
