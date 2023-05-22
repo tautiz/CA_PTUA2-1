@@ -1,28 +1,43 @@
-export class Menu {
-    constructor() {
-        console.log('Menu JS loaded');
+// export class Menu {
+//     constructor() {
 
         const page = window.location.pathname;
 
         if (page) {
-            this.redirectPage(page);
+            redirectPage(page);
         }
 
-        const meniuList = this.getMeniuList();
+        $.getJSON( "meniu.json", function( data ) {
+            generateMenu(data);
+        });
 
-        const kurDetiMeniuHTML = document.querySelector('body > header > nav > ul');
-
-        kurDetiMeniuHTML.innerHTML = '';
+        console.info('Menu JS loaded');
+//   }
+    function generateMenu(meniuList) {
+        const navigation = $('body > header > nav');
+        navigation.html('');
+        const menu = $('<ul>');
 
         for (let i = 0; i < meniuList.length; i++) {
-            const meniuItemData = meniuList[i];
-            const klase = meniuItemData.url === page ? 'active' : '';
 
-            kurDetiMeniuHTML.innerHTML += `<li class="${klase}"><a href="${meniuItemData.url}">${meniuItemData.title}</a></li>`;
+            const meniuItemData = meniuList[i];
+
+            const menuItem = $('<li>');
+            const link = $('<a>').attr('href', meniuItemData.url).text(meniuItemData.title);
+
+            link.appendTo(menuItem);
+            menuItem.appendTo(menu); // arba menu.append(menuItem);
         }
+
+        navigation.append(menu);
+
+        $(document).on("click","nav a", function (e) {
+            e.preventDefault();
+            $('main').load($(this).attr('href') + ' main>div');
+        });
     }
 
-    getRedirectPage(pageWithoutExtension = null) {
+    function getRedirectPage(pageWithoutExtension = null) {
         let redir = null;
         switch (pageWithoutExtension) {
             case '/':
@@ -64,23 +79,13 @@ export class Menu {
         return redir;
     }
 
-    redirectPage() {
+    function redirectPage() {
         const pageWithoutExtension = window.location.pathname.replace(/\.html$/, '');
 
         const redir = this.getRedirectPage(pageWithoutExtension);
 
-        if (redir) {
-            window.location.href = redir;
-        }
+        $('main').load(redir + ' main>div');
     }
 
-    getMeniuJsonString() {
-        return '[{"title":"Pradžia", "url":"/"},{"title":"CV", "url":"/cv"},{"title":"Portfolio", "url":"/portfolio"},{"title":"Kontaktai", "url":"/kontaktai"}]';
-    }
+// }
 
-    getMeniuList() {
-        const jsonMeniu = this.getMeniuJsonString();
-
-        return JSON.parse(jsonMeniu);
-    }
-}
