@@ -1,19 +1,19 @@
-// export class Menu {
-//     constructor() {
-
+export class Menu {
+    constructor() {
         const page = window.location.pathname;
 
         if (page) {
-            redirectPage(page);
+            this.redirectPage(page);
         }
 
-        $.getJSON( "meniu.json", function( data ) {
-            generateMenu(data);
+        $.getJSON("meniu.json", (data) => {
+            this.generateMenu(data);
         });
 
         console.info('Menu JS loaded');
-//   }
-    function generateMenu(meniuList) {
+    }
+
+    generateMenu(meniuList) {
         const navigation = $('body > header > nav');
         navigation.html('');
         const menu = $('<ul>');
@@ -31,13 +31,13 @@
 
         navigation.append(menu);
 
-        $(document).on("click","nav a", function (e) {
+        $(document).on("click", "nav a", (e) => {
             e.preventDefault();
             $('main').load($(this).attr('href') + ' main>div');
         });
     }
 
-    function getRedirectPage(pageWithoutExtension = null) {
+    getRedirectPage(pageWithoutExtension = null) {
         let redir = null;
         switch (pageWithoutExtension) {
             case '/':
@@ -79,13 +79,11 @@
         return redir;
     }
 
-    function redirectPage() {
+    redirectPage() {
         const pageWithoutExtension = window.location.pathname.replace(/\.html$/, '');
 
         const redir = this.getRedirectPage(pageWithoutExtension);
 
         $('main').load(redir + ' main>div');
     }
-
-// }
-
+}

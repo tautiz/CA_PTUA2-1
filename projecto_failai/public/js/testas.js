@@ -1,4 +1,4 @@
-function randomNumber(to) {
+export function randomNumber(to) {
 
     let randomNumber = Math.random();
 
@@ -6,5 +6,3 @@ function randomNumber(to) {
 
     return number;
 }
-
-console.log('Atsitiktinis skaicius: ', Math.round(randomNumber(10)));
