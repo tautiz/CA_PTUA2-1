@@ -14,5 +14,9 @@
   {
     "title": "Kontaktai",
     "url": "/kontaktai.html"
+  },
+  {
+    "title": "Admin",
+    "url": "/admin.html"
   }
 ]

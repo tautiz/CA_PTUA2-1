@@ -1,10 +1,8 @@
 export class PortfolioCrud {
     constructor() {
-        console.log('Portfolio CRUD JS loaded');
-
-        this.form = document.getElementById('portfolioForm');
-        this.tablePreloader = document.getElementById('tablePreloader');
-        this.lentele = document.getElementById('portfelioLentele');
+        this.form = $('#portfolioForm');
+        this.tablePreloader = $('#tablePreloader');
+        this.lentele = $('#portfelioLentele');
 
         this.rodytiPreloaderi = this.rodytiPreloaderi.bind(this);
         this.sleptiPreloaderi = this.sleptiPreloaderi.bind(this);
@@ -13,11 +11,13 @@ export class PortfolioCrud {
         this.redaguotiPortfelioIrasa = this.redaguotiPortfelioIrasa.bind(this);
         this.istrintiPortfelioIrasa = this.istrintiPortfelioIrasa.bind(this);
 
-        this.initialize();
+        this.init();
+
+        console.info('Portfolio CRUD JS loaded');
     }
 
-    initialize() {
-        this.form.addEventListener('submit', (event) => {
+    init() {
+        this.form.on('submit', (event) => {
             event.preventDefault();
             this.rodytiPreloaderi();
 
@@ -59,13 +59,13 @@ export class PortfolioCrud {
     }
 
     rodytiPreloaderi() {
-        this.tablePreloader.style.display = 'block';
-        this.lentele.style.display = 'none';
+        this.tablePreloader.show();
+        this.lentele.hide();
     }
 
     sleptiPreloaderi() {
-        this.tablePreloader.style.display = 'none';
-        this.lentele.style.display = 'block';
+        this.tablePreloader.hide();
+        this.lentele.show();
     }
 
     gautiVisusPortfelioDuomenis() {
@@ -79,29 +79,25 @@ export class PortfolioCrud {
     }
 
     generuotiPortfelioLentele(portfolioItems) {
-        this.lentele.innerHTML = '';
+        this.lentele.html('');
 
-        const headerRow = this.lentele.insertRow();
-        headerRow.insertCell().textContent = 'ID';
-        headerRow.insertCell().textContent = 'Pavadinimas';
-        headerRow.insertCell().textContent = 'Nuotrauka';
-        headerRow.insertCell().textContent = 'Kategorijos';
-        headerRow.insertCell().textContent = 'Veiksmai';
+        const headerRow = $('<tr>');
+        headerRow.append($('th').text('ID'));
+        headerRow.append($('th').text('Pavadinimas'));
+        headerRow.append($('th').text('Nuotrauka'));
+        headerRow.append($('th').text('Kategorijos'));
+        headerRow.append($('th').text('Veiksmai'));
 
         portfolioItems.forEach(item => {
-            const eilute = this.lentele.insertRow();
-            eilute.className = 'bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600';
+            const eilute = $('<tr>');
+            eilute.addClass('bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600');
+            eilute.append($('td').text(item.id));
+            eilute.append($('td').text(item.title));
+            eilute.append($('td').html(`<img src="${item.img}" alt="${item.title}" width="100" height="100">`));
+            eilute.append($('td').text(item.categories));
 
-            const IDLangelis = eilute.insertCell();
-            const pavadinimoLangelis = eilute.insertCell();
-            const nuotraukosLangelis = eilute.insertCell();
-            const kategorijuLangelis = eilute.insertCell();
-            const veiksmuLangelis = eilute.insertCell();
 
-            IDLangelis.textContent = item.id;
-            pavadinimoLangelis.textContent = item.title;
-            nuotraukosLangelis.innerHTML = `<img src="${item.img}" alt="${item.title}" width="100" height="100">`;
-            kategorijuLangelis.textContent = item.categories;
+            const veiksmuLangelis = $('td');
 
             const redaguotiMygtukas = document.createElement('button');
             redaguotiMygtukas.textContent = 'Redaguoti';
@@ -118,8 +114,8 @@ export class PortfolioCrud {
                 this.istrintiPortfelioIrasa(item.id);
             });
 
-            veiksmuLangelis.appendChild(redaguotiMygtukas);
-            veiksmuLangelis.appendChild(istrintiMygtukas);
+            veiksmuLangelis.append(redaguotiMygtukas);
+            veiksmuLangelis.append(istrintiMygtukas);
         });
     }
 

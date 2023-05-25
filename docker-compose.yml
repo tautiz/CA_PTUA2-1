@@ -15,3 +15,15 @@ services:
       APACHE_DOCUMENT_ROOT: /var/www/html/public
       APACHE_RUN_USER: web
       APACHE_RUN_GROUP: web
+
+  node:
+    image: "node:latest"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./projecto_failai:/home/node/app
+    expose:
+      - "8081"
+    command: "npm run build"

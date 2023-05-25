@@ -1,7 +1,5 @@
 export class UserSettings {
     constructor() {
-        console.log('User setting JS loaded');
-
         this.defaultExpirationTime = 'Fri, 31 Dec 9999 23:59:59 GMT';
         this.defaultColor = '#813d9c';
 
@@ -11,21 +9,19 @@ export class UserSettings {
         this.saveColor = this.saveColor.bind(this);
         this.setDefaultColor = this.setDefaultColor.bind(this);
 
-        this.initialize();
+        this.init();
+        console.info('User setting JS loaded');
     }
 
-    initialize() {
+    init() {
         const cookieColorScheme = this.getCookie('colorScheme') || this.defaultColor;
         this.changeColorScheme(cookieColorScheme);
 
-        const saveButton = document.querySelector('#save-color');
-        saveButton.addEventListener('click', this.saveColor);
+        $('#save-color').click(this.saveColor);
+        $('#default-color').click(this.setDefaultColor);
 
-        const defaultButton = document.querySelector('#default-color');
-        defaultButton.addEventListener('click', this.setDefaultColor);
-
-        const colorSchemeInput = document.querySelector('#color-scheme');
-        colorSchemeInput.addEventListener('input', this.changeColorScheme);
+        const colorSchemeInput = $('#color-scheme');
+        colorSchemeInput.on('input', this.changeColorScheme);
 
         colorSchemeInput.value = cookieColorScheme || this.defaultColor;
     }
@@ -49,7 +45,7 @@ export class UserSettings {
     }
 
     saveColor() {
-        const colorScheme = document.querySelector('#color-scheme').value;
+        const colorScheme = $('#color-scheme').value;
         this.setCookie('colorScheme', colorScheme, this.defaultExpirationTime);
     }
 

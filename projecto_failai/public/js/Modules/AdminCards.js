@@ -1,9 +1,13 @@
-export class AdminCards {
+import {InitInterface} from "../InitInterface.js";
+
+export class AdminCards extends InitInterface{
     constructor() {
-        console.log('Admin cards JS loaded');
-        document
-            .getElementById('cardForm')
-            .addEventListener('submit', this.handleFormSubmit);
+        super();
+        console.info('Admin cards JS loaded');
+    }
+
+    init(){
+        $('cardForm').on('submit', this.handleFormSubmit);
     }
 
     handleFormSubmit(e) {
