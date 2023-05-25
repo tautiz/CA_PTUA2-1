@@ -6,10 +6,13 @@ import {Storages} from "./Modules/storages.js";
 import {Menu} from './Modules/Menu.js';
 import Agreements from "./Modules/Agreements.js";
 import Requirements from "./Modules/Requirements.js";
+import Router from "./app/Router";
 
 window.onload = () => {
     new Requirements();
     new Agreements();
+    const router = new Router();
+    router.handleRoutes();
 
     // Instantiate all modules class with the "new" keyword
     new Menu();
