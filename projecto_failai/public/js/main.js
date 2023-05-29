@@ -6,7 +6,7 @@ import {Storages} from "./Modules/storages.js";
 import {Menu} from './Modules/Menu.js';
 import Agreements from "./Modules/Agreements.js";
 import Requirements from "./Modules/Requirements.js";
-import Router from "./app/Router";
+import Router from "./app/Router.js";
 
 window.onload = () => {
     new Requirements();
@@ -16,10 +16,10 @@ window.onload = () => {
 
     // Instantiate all modules class with the "new" keyword
     new Menu();
-    new AdminCards();
-    new UserSettings();
-    new PortfolioCrud();
-    new Storages();
+    // new AdminCards();
+    // new UserSettings();
+    // new PortfolioCrud();
+    // new Storages();
 
     console.log('Atsitiktinis skaicius: ', Math.round(randomNumber(10)));
 };

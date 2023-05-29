@@ -1,37 +1,29 @@
+import CvController from "../Controllers/CvController.js";
+import Api from "../app/Api.js";
+
 export class Router {
     constructor() {
         this.path = window.location.pathname;
+        this.api = new Api();
+        console.info('Router loaded: ', this.path);
     }
 
     // Funkcija, kuri apdoroja maršrutus
     handleRoutes() {
         if (this.path === '/') {
-            this.loadPage('index');
+            this.api.loadPage('index');
         } else if (this.path === '/cv') {
-            this.loadPage('cv');
+            let controller = new CvController();
+            controller.index();
         } else if (this.path === '/kontaktai') {
-            this.loadPage('kontaktai');
+            this.api.loadPage('kontaktai');
         } else if (this.path === '/portfolio') {
-            this.loadPage('portfolio');
+            this.api.loadPage('portfolio');
         } else if (this.path === '/admin') {
-            this.loadPage('admin');
+            this.api.loadPage('admin');
         } else {
-            this.loadPage('404');
+            this.api.loadPage('404');
         }
-    }
-
-    // Funkcija, kuri krauna modulį iš HTML failo
-    loadPage(page) {
-        // TODO: Įkelti puslapį iš HTML failo naudojant jQuery Ajax ar pan.
-        // fetch(`${page}.html`)
-        //     .then(response => response.text())
-        //     .then(html => {
-        //         const mainContent = document.querySelector('main');
-        //         mainContent.innerHTML = html;
-        //     })
-        //     .catch(error => {
-        //         console.error('Klaida kraunant puslapį:', error);
-        //     });
     }
 }
 export default Router;

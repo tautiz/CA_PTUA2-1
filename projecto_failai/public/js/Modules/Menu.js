@@ -5,9 +5,9 @@ export class Menu {
         const page = window.location.pathname;
         this.loadedModules = {};
 
-        if (page) {
-            this.redirectPage(page);
-        }
+        // if (page) {
+        //     this.redirectPage(page);
+        // }
 
         $.getJSON("meniu.json", (data) => {
             this.generateMenu(data);
@@ -109,53 +109,53 @@ export class Menu {
         return parts[0];
     }
 
-    getRedirectPage(pageWithoutExtension = null) {
-        let redir = null;
-        switch (pageWithoutExtension) {
-            case '/':
-            case '/index':
-                if (window.location.pathname !== '/index.html') {
-                    redir = 'index.html';
-                }
-                break;
-            case '/cv':
-                if (window.location.pathname !== '/cv.html') {
-                    redir = 'cv.html';
-                }
-                break;
-            case '/portfolio':
-                if (window.location.pathname !== '/portfolio.html') {
-                    redir = 'portfolio.html';
-                }
-                break;
-            case '/kontaktai':
-                if (window.location.pathname !== '/kontaktai.html') {
-                    redir = 'kontaktai.html';
-                }
-                break;
-            case '/404':
-                if (window.location.pathname !== '/404.html') {
-                    redir = '404.html';
-                }
-                break;
-            case '/admin':
-                if (window.location.pathname !== '/admin.html') {
-                    redir = 'admin.html';
-                }
-                break;
-            default:
-                redir = '404.html';
-                break;
-        }
-
-        return redir;
-    }
-
-    redirectPage() {
-        const pageWithoutExtension = window.location.pathname.replace(/\.html$/, '');
-
-        const redir = this.getRedirectPage(pageWithoutExtension);
-
-        $('main').load(redir + ' main>div');
-    }
+    // getRedirectPage(pageWithoutExtension = null) {
+    //     let redir = null;
+    //     switch (pageWithoutExtension) {
+    //         case '/':
+    //         case '/index':
+    //             if (window.location.pathname !== '/index.html') {
+    //                 redir = 'index.html';
+    //             }
+    //             break;
+    //         case '/cv':
+    //             if (window.location.pathname !== '/cv.html') {
+    //                 redir = 'cv.html';
+    //             }
+    //             break;
+    //         case '/portfolio':
+    //             if (window.location.pathname !== '/portfolio.html') {
+    //                 redir = 'portfolio.html';
+    //             }
+    //             break;
+    //         case '/kontaktai':
+    //             if (window.location.pathname !== '/kontaktai.html') {
+    //                 redir = 'kontaktai.html';
+    //             }
+    //             break;
+    //         case '/404':
+    //             if (window.location.pathname !== '/404.html') {
+    //                 redir = '404.html';
+    //             }
+    //             break;
+    //         case '/admin':
+    //             if (window.location.pathname !== '/admin.html') {
+    //                 redir = 'admin.html';
+    //             }
+    //             break;
+    //         default:
+    //             redir = '404.html';
+    //             break;
+    //     }
+    //
+    //     return redir;
+    // }
+    //
+    // redirectPage() {
+    //     const pageWithoutExtension = window.location.pathname.replace(/\.html$/, '');
+    //
+    //     const redir = this.getRedirectPage(pageWithoutExtension);
+    //
+    //     $('main').load(redir + ' main>div');
+    // }
 }
