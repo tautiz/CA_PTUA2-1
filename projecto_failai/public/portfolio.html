@@ -1,114 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mano portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/design.css">
-    <link rel="stylesheet" href="css/portfolio.css">
-</head>
-<body>
+<h1>Mano atliktų darbų sąrašas</h1>
+<hr>
+<form>
+    <label>
+        Kategorija:
+        <select name="category">
+            <option value="" selected>---Visi---</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">js</option>
+            <option value="python">python</option>
+            <option value="mysql">MySql</option>
+        </select>
+    </label>
+    <button type="submit">Filter</button>
+</form>
+<hr>
+<div class="darbai"></div>
+<hr>
+<div class="sachmatai">
+    <div>&lt;DIV 1&gt;</div>
+    <div>&lt;DIV 2&gt;</div>
+    <div>&lt;DIV 3&gt;</div>
+    <div>&lt;DIV 4&gt;</div>
+    <div>&lt;DIV 5&gt;</div>
+    <div>&lt;DIV 6&gt;</div>
+    <div>&lt;DIV 7&gt;</div>
+    <div>&lt;DIV 8&gt;</div>
+    <div>&lt;DIV 9&gt;</div>
+    <div>&lt;DIV 10&gt;</div>
+    <div>&lt;DIV 11&gt;</div>
+    <div>&lt;DIV 12&gt;</div>
+    <div>&lt;DIV 13&gt;</div>
+    <div>&lt;DIV 14&gt;</div>
+    <div>&lt;DIV 15&gt;</div>
+    <div>&lt;DIV 16&gt;</div>
+    <div>&lt;DIV 17&gt;</div>
+    <div>&lt;DIV 18&gt;</div>
+    <div>&lt;DIV 19&gt;</div>
+    <div>&lt;DIV 20&gt;</div>
+    <div>&lt;DIV 21&gt;</div>
+    <div>&lt;DIV 22&gt;</div>
+    <div>&lt;DIV 23&gt;</div>
+    <div>&lt;DIV 24&gt;</div>
+    <div>&lt;DIV 25&gt;</div>
+</div>
+<hr>
+<div class="darbas_elementais">
+    <span id="unikalusElementas">Labas pasauli</span>
 
+    <img src="img1.jpg" alt="img1" class="galerijosFoto">
+    <img src="img2.jpg" alt="img2" class="galerijosFoto">
+    <img src="img3.jpg" alt="img3" class="galerijosFoto">
 
-<header>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Pradžia</a>
-            </li>
-            <li>
-                <a href="cv.html">CV</a>
-            </li>
-            <li>
-                <a href="portfolio.html">Portfolio</a>
-            </li>
-            <li>
-                <a href="kontaktai.html">Kontaktai</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <div>
-        <h1>Mano atliktų darbų sąrašas</h1>
-        <hr>
-        <form>
-            <label>
-                Kategorija:
-                <select name="category">
-                    <option value="" selected>---Visi---</option>
-                    <option value="html">HTML</option>
-                    <option value="css">CSS</option>
-                    <option value="js">js</option>
-                    <option value="python">python</option>
-                    <option value="mysql">MySql</option>
-                </select>
-            </label>
-            <button type="submit">Filter</button>
-        </form>
-        <hr>
-        <div class="darbai"></div>
-        <hr>
-        <div class="sachmatai">
-            <div>&lt;DIV 1&gt;</div>
-            <div>&lt;DIV 2&gt;</div>
-            <div>&lt;DIV 3&gt;</div>
-            <div>&lt;DIV 4&gt;</div>
-            <div>&lt;DIV 5&gt;</div>
-            <div>&lt;DIV 6&gt;</div>
-            <div>&lt;DIV 7&gt;</div>
-            <div>&lt;DIV 8&gt;</div>
-            <div>&lt;DIV 9&gt;</div>
-            <div>&lt;DIV 10&gt;</div>
-            <div>&lt;DIV 11&gt;</div>
-            <div>&lt;DIV 12&gt;</div>
-            <div>&lt;DIV 13&gt;</div>
-            <div>&lt;DIV 14&gt;</div>
-            <div>&lt;DIV 15&gt;</div>
-            <div>&lt;DIV 16&gt;</div>
-            <div>&lt;DIV 17&gt;</div>
-            <div>&lt;DIV 18&gt;</div>
-            <div>&lt;DIV 19&gt;</div>
-            <div>&lt;DIV 20&gt;</div>
-            <div>&lt;DIV 21&gt;</div>
-            <div>&lt;DIV 22&gt;</div>
-            <div>&lt;DIV 23&gt;</div>
-            <div>&lt;DIV 24&gt;</div>
-            <div>&lt;DIV 25&gt;</div>
-        </div>
-        <hr>
-        <div class="darbas_elementais">
-            <span id="unikalusElementas">Labas pasauli</span>
+    <ul class="wrapper">
+        <li class="element">Tekstas1</li>
+        <li class="element">Tekstas2</li>
+        <li class="element">Tekstas3</li>
+    </ul>
+</div>
+<hr>
+<div id="content"></div>
 
-            <img src="img1.jpg" alt="img1" class="galerijosFoto">
-            <img src="img2.jpg" alt="img2" class="galerijosFoto">
-            <img src="img3.jpg" alt="img3" class="galerijosFoto">
-
-            <ul class="wrapper">
-                <li class="element">Tekstas1</li>
-                <li class="element">Tekstas2</li>
-                <li class="element">Tekstas3</li>
-            </ul>
-        </div>
-        <hr>
-        <div id="content"></div>
-
-        <dialog id="favDialog">
-            <img src="#" alt="Image">
-            <input type="button" value="X" title="Close">
-        </dialog>
-    </div>
-</main>
-<aside>
-    <div class="relkama">TAVO reklama</div>
-</aside>
-<footer>
-    <span>© 2023 - visos teisės saugomos</span>
-</footer>
-
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script type="module" src="/js/main.js" defer></script>
-
-</body>
-</html>
+<dialog id="favDialog">
+    <img src="#" alt="Image">
+    <input type="button" value="X" title="Close">
+</dialog>

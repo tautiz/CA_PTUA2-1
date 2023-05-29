@@ -2,7 +2,7 @@ import ControllerInterface from "../app/ControllerInterface.js";
 import Api from "../app/Api.js";
 import Render from "../app/Render.js";
 
-export class CvController extends ControllerInterface {
+export class AdminController extends ControllerInterface {
     constructor() {
         super();
         this.api = new Api();
@@ -10,11 +10,11 @@ export class CvController extends ControllerInterface {
     }
 
     index() {
-        this.api.get('/api/cv').then(data => {
-            this.render.renderView('cv.html', data);
+        this.api.get('/api/admin').then(data => {
+            this.render.renderView('admin.html', data);
         });
     }
 }
 
 // Export the Cv class as the default export
-export default CvController;
+export default AdminController;
