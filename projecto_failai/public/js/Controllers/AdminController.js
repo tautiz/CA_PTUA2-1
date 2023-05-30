@@ -2,6 +2,7 @@ import ControllerInterface from "../app/ControllerInterface.js";
 import Api from "../app/Api.js";
 import Render from "../app/Render.js";
 import {UserSettings} from "../Modules/UserSettings.js";
+import {PortfolioCrud} from "../Modules/PortfolioCrud.js";
 
 export default class AdminController extends ControllerInterface {
     constructor() {
@@ -14,6 +15,7 @@ export default class AdminController extends ControllerInterface {
         this.render.renderView('admin.html', [], () => {
             let userSettings = new UserSettings();
             userSettings.init();
+            (new PortfolioCrud()).init();
         });
 
     }

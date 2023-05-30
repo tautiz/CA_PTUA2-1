@@ -49,7 +49,7 @@ export class PortfolioCrud {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    console.log('DATA',data);
                     this.gautiVisusPortfelioDuomenis();
                 })
                 .catch(error => console.error('Error:', error));
@@ -82,41 +82,45 @@ export class PortfolioCrud {
         this.lentele.html('');
 
         const headerRow = $('<tr>');
-        headerRow.append($('th').text('ID'));
-        headerRow.append($('th').text('Pavadinimas'));
-        headerRow.append($('th').text('Nuotrauka'));
-        headerRow.append($('th').text('Kategorijos'));
-        headerRow.append($('th').text('Veiksmai'));
+        headerRow.append(($('<th>').text('ID')));
+        headerRow.append($('<th>').text('Pavadinimas'));
+        headerRow.append($('<th>').text('Nuotrauka'));
+        headerRow.append($('<th>').text('Kategorijos'));
+        headerRow.append($('<th>').text('Veiksmai'));
+        this.lentele.append(headerRow);
 
         portfolioItems.forEach(item => {
             const eilute = $('<tr>');
             eilute.addClass('bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600');
-            eilute.append($('td').text(item.id));
-            eilute.append($('td').text(item.title));
-            eilute.append($('td').html(`<img src="${item.img}" alt="${item.title}" width="100" height="100">`));
-            eilute.append($('td').text(item.categories));
+            eilute.append($('<td>').text(item.id));
+            eilute.append($('<td>').text(item.title));
+            eilute.append($('<td>').html(`<img src="${item.img}" alt="${item.title}" width="100" height="100">`));
+            eilute.append($('<td>').text(item.categories));
 
 
-            const veiksmuLangelis = $('td');
+            const veiksmuLangelis = $('<td>');
 
-            const redaguotiMygtukas = document.createElement('button');
-            redaguotiMygtukas.textContent = 'Redaguoti';
-            redaguotiMygtukas.className = 'text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800';
-
-            redaguotiMygtukas.addEventListener('click', () => {
+            const redaguotiMygtukas = $('<button>')
+                .text('Redaguoti')
+                .addClass('text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800')
+                .click( () => {
                 this.redaguotiPortfelioIrasa(item.id);
             });
 
-            const istrintiMygtukas = document.createElement('button');
-            istrintiMygtukas.textContent = 'Ištrinti';
-            istrintiMygtukas.className = 'text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900';
-            istrintiMygtukas.addEventListener('click', () => {
+            const istrintiMygtukas = $('<button>')
+                .text('Ištrinti')
+                .addClass('text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900')
+                .click(() => {
                 this.istrintiPortfelioIrasa(item.id);
             });
 
             veiksmuLangelis.append(redaguotiMygtukas);
             veiksmuLangelis.append(istrintiMygtukas);
+            eilute.append(veiksmuLangelis);
+            this.lentele.append(eilute);
         });
+
+        console.log(this.lentele);
     }
 
     redaguotiPortfelioIrasa(id) {
@@ -124,10 +128,13 @@ export class PortfolioCrud {
         fetch(`http://localhost:81/portfolio/${id}`)
             .then(response => response.json())
             .then(data => {
-                this.form.elements.id.value = data.id;
-                this.form.elements.title.value = data.title;
-                this.form.elements.img.value = data.img;
-                this.form.elements.categories.value = data.categories;
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        const value = data[key];
+                        console.log(key, value);
+                        this.form.children(`[name="${key}"]`).val(value);
+                    }
+                }
             })
             .catch(error => console.error('Klaida:', error));
     }
