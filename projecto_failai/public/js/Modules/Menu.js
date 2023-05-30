@@ -1,5 +1,3 @@
-import {InitInterface} from "../InitInterface.js";
-
 export class Menu {
     constructor() {
         $.getJSON("meniu.json", (data) => {

@@ -2,7 +2,7 @@ import ControllerInterface from "../app/ControllerInterface.js";
 import Api from "../app/Api.js";
 import Render from "../app/Render.js";
 
-export class MainController extends ControllerInterface {
+export default class MainController extends ControllerInterface {
     constructor() {
         super();
         this.api = new Api();
@@ -15,6 +15,3 @@ export class MainController extends ControllerInterface {
         });
     }
 }
-
-// Export the Cv class as the default export
-export default MainController;

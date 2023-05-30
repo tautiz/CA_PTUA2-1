@@ -45,7 +45,7 @@ export class UserSettings {
     }
 
     saveColor() {
-        const colorScheme = $('#color-scheme').value;
+        const colorScheme = $('#color-scheme').val();
         this.setCookie('colorScheme', colorScheme, this.defaultExpirationTime);
     }
 

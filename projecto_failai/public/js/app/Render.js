@@ -1,14 +1,17 @@
 import Api from "./Api.js";
 
-export class Render {
+export default class Render {
     constructor() {
         this.api = new Api();
-
     }
 
-    renderView(templateFile, data) {
+    renderView(templateFile, data = [], callback = null) {
         this.api.getText(templateFile).then(content => {
             document.querySelector("#app").innerHTML = this.replacePlaceholders(content, data);
+        }).then(() => {
+            if (typeof callback == 'function') {
+                callback();
+            }
         });
     }
 
@@ -26,7 +29,4 @@ export class Render {
             return value;
         });
     }
-
 }
-
-export default Render;

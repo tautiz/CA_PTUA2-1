@@ -1,8 +1,5 @@
-import {InitInterface} from "../InitInterface.js";
-
-export class Portfolio extends InitInterface {
+export default class Portfolio {
     constructor() {
-        super();
         this.darbaiElement = document.querySelector('.darbai');
         this.darbai = document.getElementsByClassName('darbas');
         this.favDialog = document.getElementById('favDialog');
@@ -32,20 +29,16 @@ export class Portfolio extends InitInterface {
         for (let darbas of this.darbai) {
             darbas.addEventListener('click', this.loadImageAndShowDModal);
         }
-        let elements = document.querySelectorAll('.sachmatai > div');
-        for (let item of elements) {
-            item.addEventListener('click', function (e) {
-                for (let elem of elements) {
-                    if (elem !== e.target) {
-                        elem.classList.remove('zoomed');
-                    }
-                }
 
-                e.target.classList.toggle('zoomed');
-            })
-        }
+        const sachmatai = $('.sachmatai > div');
 
-        this.filerForm.addEventListener('submit', this.handleFormSubmit);
+        sachmatai.removeClass('zoomed');
+        sachmatai.click((e) => {
+            sachmatai.removeClass('zoomed');
+            $(e.target).toggleClass('zoomed');
+        })
+
+        this.filerForm.addEventListener('submit', this.handleFormSubmit.bind(this));
     }
 
     getRandomNumber() {
@@ -110,12 +103,9 @@ export class Portfolio extends InitInterface {
         this.favDialog.close(); // Dialogo uždarymas.
     }
 
-    async handleFormSubmit(e) {
+    handleFormSubmit(e, thisArg = this) {
         e.preventDefault();
         let selectedCategory = e.target.elements.category.value;
-
-        await this.generatePortfolio(selectedCategory);
+        thisArg.generatePortfolio(selectedCategory);
     }
 }
-
-export default Portfolio;
