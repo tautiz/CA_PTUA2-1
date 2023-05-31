@@ -1,4 +1,4 @@
-export class Requirements {
+export default class Requirements {
     constructor() {
         this.checkRequirements();
     }
@@ -12,5 +12,3 @@ export class Requirements {
         }
     }
 }
-
-export default Requirements;

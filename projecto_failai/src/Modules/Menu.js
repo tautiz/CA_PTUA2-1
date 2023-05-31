@@ -8,7 +8,7 @@ export class Menu {
     }
 
     generateMenu(menuList) {
-        const navigation = $('body > header > nav');
+        const navigation = $('#app > header > nav');
         navigation.html('');
         const menu = $('<ul>');
 

@@ -7,7 +7,7 @@ export default class Render {
 
     renderView(templateFile, data = [], callback = null) {
         this.api.getText(templateFile).then(content => {
-            document.querySelector("#app").innerHTML = this.replacePlaceholders(content, data);
+            document.querySelector("#apps").innerHTML = this.replacePlaceholders(content, data);
         }).then(() => {
             if (typeof callback == 'function') {
                 callback();
